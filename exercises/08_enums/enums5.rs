@@ -1,26 +1,45 @@
 // enums5.rs
 //
-// This exercise introduces you to the Result<T, E> enum, which is used for
-// error handling in Rust. A Result can be either Ok(value) or Err(error).
+// This exercise will teach you about using `if let` as a more concise
+// alternative to `match` when you only care about one specific pattern.
 //
 // Execute `rustlings hint enums5` or use the `hint` watch subcommand for a
 // hint.
 
-#[derive(Debug, PartialEq)]
-enum DivisionError {
-    DivideByZero,
-    NotDivisible,
+#[derive(Debug)]
+enum WebEvent {
+    PageLoad,
+    PageUnload,
+    KeyPress(char),
+    Paste(String),
+    Click { x: i64, y: i64 },
 }
 
-// TODO: Implement this function to return Ok if b divides a evenly,
-// Err(DivisionError::DivideByZero) if b is zero, and
-// Err(DivisionError::NotDivisible) if a is not evenly divisible by b.
-fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
+fn inspect_event(event: WebEvent) {
+    // TODO: Use `if let` to check if the event is a Click event.
+    // If it is, print "Clicked at x={}, y={}".
+    // For all other events, print "Other event: {:?}".
+}
+
+fn extract_key(event: WebEvent) -> Option<char> {
+    // TODO: Use `if let` to extract and return the char from a KeyPress event.
+    // Return None for all other events.
+
     todo!()
 }
 
 fn main() {
-    // You can optionally experiment here.
+    let events = vec![
+        WebEvent::PageLoad,
+        WebEvent::KeyPress('x'),
+        WebEvent::Click { x: 20, y: 80 },
+        WebEvent::Paste(String::from("test")),
+        WebEvent::KeyPress('a'),
+    ];
+
+    for event in events {
+        inspect_event(event);
+    }
 }
 
 #[cfg(test)]
@@ -28,18 +47,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_divide_success() {
-        assert_eq!(divide(10, 2), Ok(5));
-        assert_eq!(divide(20, 4), Ok(5));
-    }
-
-    #[test]
-    fn test_divide_by_zero() {
-        assert_eq!(divide(10, 0), Err(DivisionError::DivideByZero));
-    }
-
-    #[test]
-    fn test_not_divisible() {
-        assert_eq!(divide(10, 3), Err(DivisionError::NotDivisible));
+    fn test_extract_key() {
+        assert_eq!(extract_key(WebEvent::KeyPress('a')), Some('a'));
+        assert_eq!(extract_key(WebEvent::PageLoad), None);
+        assert_eq!(extract_key(WebEvent::Click { x: 1, y: 2 }), None);
     }
 }
