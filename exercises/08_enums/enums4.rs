@@ -13,10 +13,12 @@ fn main() {
 
     // TODO: Use pattern matching to sum only the Some values.
     // The sum should be 50 (5 + 10 + 15 + 20).
-    let sum = numbers.iter().fold(0, |acc, item| match item {
-        Some(n) => acc + n,
-        None => acc,
-    });
+    let sum = numbers.iter().fold(
+        0,
+        |acc, item| {
+            if let Some(n) = item { acc + n } else { acc }
+        },
+    );
 
     println!("The sum is: {}", sum);
     assert_eq!(sum, 50);
