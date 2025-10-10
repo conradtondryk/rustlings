@@ -19,19 +19,31 @@ impl TrafficLight {
     // that each light should stay on.
     // Red: 60 seconds, Yellow: 10 seconds, Green: 90 seconds
     fn duration(&self) -> u32 {
-        todo!()
+        match self {
+            TrafficLight::Red => 60,
+            TrafficLight::Yellow => 10,
+            TrafficLight::Green => 90,
+        }
     }
 
     // TODO: Implement a method that returns the next traffic light state.
     // Red -> Green, Green -> Yellow, Yellow -> Red
     fn next(&self) -> TrafficLight {
-        todo!()
+        match self {
+            TrafficLight::Red => TrafficLight::Green,
+            TrafficLight::Green => TrafficLight::Yellow,
+            TrafficLight::Yellow => TrafficLight::Red,
+        }
     }
 
     // TODO: Implement a method that returns true if it's safe to cross
     // the street (only when the light is Red).
     fn can_cross(&self) -> bool {
-        todo!()
+        if let TrafficLight::Red = self {
+            true
+        } else {
+            false
+        }
     }
 }
 
