@@ -16,7 +16,13 @@ enum DivisionError {
 // Err(DivisionError::DivideByZero) if b is zero, and
 // Err(DivisionError::NotDivisible) if a is not evenly divisible by b.
 fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
-    todo!()
+    if b == 0 {
+        return Err(DivisionError::DivideByZero);
+    }
+    if a % b != 0 {
+        return Err(DivisionError::NotDivisible);
+    }
+    Ok(a / b)
 }
 
 fn main() {
