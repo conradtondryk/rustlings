@@ -15,7 +15,9 @@ fn main() {
     // The sum should be 50 (5 + 10 + 15 + 20).
     let sum = numbers.iter().fold(0, |acc, item| {
         if let Some(n) = item {
-            return acc + n;
+            acc + n
+        } else {
+            acc
         }
         acc
     });
