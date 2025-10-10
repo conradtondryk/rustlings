@@ -7,14 +7,14 @@
 // hint.
 
 #[derive(Debug, PartialEq)]
-enum Shape {
-    Circle(f64),           // radius
-    Rectangle(f64, f64),   // width, height
-    Triangle(f64, f64),    // base, height
+pub enum Shape {
+    Circle(f64),         // radius
+    Rectangle(f64, f64), // width, height
+    Triangle(f64, f64),  // base, height
 }
 
 #[derive(Debug, PartialEq)]
-enum DrawCommand {
+pub enum DrawCommand {
     Draw(Shape),
     Move { x: i32, y: i32 },
     Clear,
@@ -25,21 +25,38 @@ enum DrawCommand {
 // Circle: π * r²  (use 3.14159 for π)
 // Rectangle: width * height
 // Triangle: (base * height) / 2
+#[allow(clippy::approx_constant)]
 fn calculate_area(shape: &Shape) -> f64 {
-    todo!()
+    use Shape::*;
+    match shape {
+        Circle(r) => 3.14159 * r.powf(2.0),
+        Rectangle(w, h) => w * h,
+        Triangle(b, h) => b * h / 2.0,
+    }
 }
 
 // TODO: Implement this function to extract a Shape from a DrawCommand.
 // Return Some(shape) if the command is Draw(shape), None otherwise.
 fn extract_shape(command: DrawCommand) -> Option<Shape> {
-    todo!()
+    match command {
+        DrawCommand::Draw(s) => Some(s),
+        _ => None,
+    }
 }
 
 // TODO: Implement this function to process a draw command.
 // If it's Draw(shape), return the area of the shape.
 // For all other commands, return 0.0.
 fn process_command(command: DrawCommand) -> f64 {
-    todo!()
+    use Shape::*;
+    match command {
+        DrawCommand::Draw(s) => match s {
+            Circle(r) => calculate_area(&Circle(r)),
+            Rectangle(w, h) => calculate_area(&Rectangle(w, h)),
+            Triangle(b, h) => calculate_area(&Triangle(b, h)),
+        },
+        _ => 0.0,
+    }
 }
 
 fn main() {
@@ -63,7 +80,6 @@ mod tests {
 
     #[test]
     fn test_extract_shape() {
-        let shape = Shape::Circle(5.0);
         assert_eq!(
             extract_shape(DrawCommand::Draw(Shape::Circle(5.0))),
             Some(Shape::Circle(5.0))
