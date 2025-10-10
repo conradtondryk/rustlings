@@ -19,13 +19,21 @@ fn inspect_event(event: WebEvent) {
     // TODO: Use `if let` to check if the event is a Click event.
     // If it is, print "Clicked at x={}, y={}".
     // For all other events, print "Other event: {:?}".
+    if let WebEvent::Click { x, y } = event {
+        println!("Clicked at x={}, y={}", x, y)
+    } else {
+        println!("Other event: {:?}", event)
+    }
 }
 
 fn extract_key(event: WebEvent) -> Option<char> {
     // TODO: Use `if let` to extract and return the char from a KeyPress event.
     // Return None for all other events.
-
-    todo!()
+    if let WebEvent::KeyPress(char) = event {
+        Some(char)
+    } else {
+        None
+    }
 }
 
 fn main() {
