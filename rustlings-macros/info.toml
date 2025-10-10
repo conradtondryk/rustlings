@@ -453,6 +453,93 @@ Then, create a match expression in `process()`.
 Note that you need to deconstruct some message variants in the match expression
 to get the variant's values."""
 
+[[exercises]]
+name = "enums4"
+dir = "08_enums"
+hint = """
+You'll need to iterate over the vector of Options and check each one.
+Use a `match` expression or `if let` to check if the value is `Some(value)`.
+If it is, add the value to your sum."""
+
+[[exercises]]
+name = "enums5"
+dir = "08_enums"
+hint = """
+`if let` is a more concise way to handle a single pattern match.
+
+The syntax is: `if let Pattern = value { /* do something */ }`
+
+For example: `if let Some(x) = optional_value { println!("{}", x); }`
+
+Or with enum variants: `if let Click { x, y } = event { /* use x and y */ }`"""
+
+[[exercises]]
+name = "enums6"
+dir = "08_enums"
+hint = """
+You can implement methods on enums just like you do on structs!
+
+Use `match` on `self` to handle each variant and return the appropriate value.
+
+For the `next` method, you'll need to return a new `TrafficLight` variant."""
+
+[[exercises]]
+name = "enums7"
+dir = "08_enums"
+hint = """
+The Result type is used for functions that can fail.
+
+Return `Ok(value)` when the operation succeeds.
+Return `Err(error)` when the operation fails.
+
+Check the conditions in order:
+1. First check if b is 0 (division by zero)
+2. Then check if a % b is 0 (not divisible)
+3. Otherwise, return Ok with the result of a / b"""
+
+[[exercises]]
+name = "enums8"
+dir = "08_enums"
+hint = """
+For nested enums, you need to match on the outer enum first, then extract
+the inner enum value.
+
+For `calculate_area`:
+- Use `match` to handle each Shape variant
+- Remember: π ≈ 3.14159
+
+For `extract_shape`:
+- Use `match` or `if let` to check if it's a `Draw` command
+- Return `Some(shape)` if it is, `None` otherwise
+
+For `process_command`:
+- Combine the previous functions or use nested matching"""
+
+[[exercises]]
+name = "enums9"
+dir = "08_enums"
+hint = """
+The `?` operator is a shorthand for propagating errors.
+
+When you use `?` after a Result, it will:
+- Return the Ok value if the Result is Ok
+- Return early with the Err if the Result is Err
+
+Example:
+```
+let value = some_function()?; // If Err, return early. If Ok, unwrap the value.
+```
+
+For the `divide_and_sqrt` function, chain the operations:
+```
+let result = safe_divide(a, b)?;
+safe_sqrt(result)
+```
+
+For `add_to_first`, you can use the `?` operator with Option too, or use
+`.first()` to get the first element (returns Option) and then `.map()` to
+transform it."""
+
 # STRINGS
 
 [[exercises]]
