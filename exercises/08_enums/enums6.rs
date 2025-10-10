@@ -39,11 +39,7 @@ impl TrafficLight {
     // TODO: Implement a method that returns true if it's safe to cross
     // the street (only when the light is Red).
     fn can_cross(&self) -> bool {
-        if let TrafficLight::Red = self {
-            true
-        } else {
-            false
-        }
+        matches!(self, TrafficLight::Red)
     }
 }
 
