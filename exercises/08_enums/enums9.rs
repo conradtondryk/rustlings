@@ -17,14 +17,22 @@ enum MathError {
 // TODO: Implement this function to safely divide two numbers.
 // Return Err(MathError::DivisionByZero) if b is 0.
 fn safe_divide(a: i32, b: i32) -> Result<i32, MathError> {
-    todo!()
+    if b == 0 {
+        Err(MathError::DivisionByZero)
+    } else {
+        a / b
+    }
 }
 
 // TODO: Implement this function to calculate the square root of a number.
 // Return Err(MathError::NegativeSquareRoot) if n is negative.
 // You can use (n as f64).sqrt() and convert back to i32.
 fn safe_sqrt(n: i32) -> Result<i32, MathError> {
-    todo!()
+    if n >= 0 {
+        (n as f64).sqrt() as i32
+    } else {
+        Err(MathError::NegativeSquareRoot)
+    }
 }
 
 // TODO: Implement this function that uses the `?` operator to chain

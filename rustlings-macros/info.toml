@@ -426,6 +426,43 @@ the `Package` struct that this relates to?
 Have a look in The Book to find out more about method implementations:
 https://doc.rust-lang.org/book/ch05-03-method-syntax.html"""
 
+[[exercises]]
+name = "structs4"
+dir = "07_structs"
+test = false
+hint = """
+There are three types of structs in Rust:
+1. Regular structs with named fields: `struct Name { field: Type }`
+2. Tuple structs: `struct Name(Type1, Type2);`
+3. Unit structs (no fields): `struct Name;`
+
+For the Book struct, you'll need a regular struct with named fields.
+For RGB, you need a tuple struct that holds three values.
+For Marker, you need a unit struct.
+
+Check out: https://doc.rust-lang.org/book/ch05-01-defining-structs.html"""
+
+[[exercises]]
+name = "structs5"
+dir = "07_structs"
+hint = """
+When a struct field might not have a value, use Option<T>.
+
+To create a User with no age or profile picture, use `None` for those fields.
+
+Example:
+```
+User {
+    username: some_string,
+    email: another_string,
+    age: None,
+    profile_picture: None,
+}
+```
+
+To create one WITH an age, use `Some(25)`.
+To create one with both age and picture, use `Some(value)` for both fields."""
+
 # ENUMS
 
 [[exercises]]
@@ -539,6 +576,82 @@ safe_sqrt(result)
 For `add_to_first`, you can use the `?` operator with Option too, or use
 `.first()` to get the first element (returns Option) and then `.map()` to
 transform it."""
+
+[[exercises]]
+name = "enums10"
+dir = "08_enums"
+test = false
+hint = """
+Remember the syntax for defining enums:
+
+```
+enum EnumName {
+    Variant1,                    // unit variant (no data)
+    Variant2(Type),              // tuple variant (holds data)
+    Variant3(Type1, Type2),      // tuple variant with multiple values
+}
+```
+
+For Pet, you just need simple variants with no data.
+For IpAddress, each variant should hold a String.
+For HttpStatus, Ok holds just a u16, NotFound holds a String, and ServerError holds both."""
+
+[[exercises]]
+name = "enums11"
+dir = "08_enums"
+test = false
+hint = """
+Enum variants can have named fields (struct-like syntax):
+
+```
+enum MyEnum {
+    VariantName { field1: Type1, field2: Type2 },
+}
+```
+
+This is useful when you want to give meaningful names to the data in each variant.
+
+To create an instance:
+```
+MyEnum::VariantName { field1: value1, field2: value2 }
+```"""
+
+[[exercises]]
+name = "enums12"
+dir = "08_enums"
+test = false
+hint = """
+You can mix all three types of variants in one enum!
+
+```
+enum MixedEnum {
+    UnitVariant,                           // no data
+    TupleVariant(String, u32),             // tuple data
+    StructVariant { name: String, age: u32 }, // named fields
+}
+```
+
+Look at how the code creates instances of each variant - that tells you
+what type of variant each one should be."""
+
+[[exercises]]
+name = "enums13"
+dir = "08_enums"
+hint = """
+This exercise combines structs and enums.
+
+First, define the User struct with the fields listed in the TODO.
+
+Then, define the Notification enum where some variants hold a User.
+
+When a variant holds a struct with named fields, use:
+`Variant { field1: value, field2: value }`
+
+When a variant holds a value directly (tuple-style), use:
+`Variant(value)`
+
+Look at how `display_notification` matches on the enum to understand
+what fields each variant should have."""
 
 # STRINGS
 
