@@ -12,14 +12,32 @@
 // - Bird (no data)
 // - Fish (no data)
 
+enum Pet {
+    Dog,
+    Cat,
+    Bird,
+    Fish,
+}
+
 // TODO: Define an enum called `IpAddress` with the following variants:
 // - V4 - holds a single String
 // - V6 - holds a single String
+
+enum IpAddress {
+    V4(String),
+    V6(String),
+}
 
 // TODO: Define an enum called `HttpStatus` with these variants:
 // - Ok - holds a u16 (status code)
 // - NotFound - holds a String (error message)
 // - ServerError - holds a u16 (status code) and a String (error message)
+
+enum HttpStatus {
+    Ok(u16),
+    NotFound(String),
+    ServerError(u16, String),
+}
 
 fn describe_pet(pet: Pet) -> String {
     match pet {
