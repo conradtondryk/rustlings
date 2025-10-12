@@ -10,12 +10,23 @@
 // TODO: Define a struct called `User` with fields:
 // - id: u32
 // - name: String
+struct User {
+    id: u32,
+    name: String,
+}
 
 // TODO: Define an enum called `Notification` with these variants:
 // - Message (struct variant with: from (User), content (String))
 // - Like (struct variant with: from (User), post_id (u32))
 // - Follow (tuple variant holding a User)
 // - SystemAlert (tuple variant holding a String for the alert message)
+
+enum Notification {
+    Message { from: User, content: String },
+    Like { from: User, post_id: u32 },
+    Follow(User),
+    SystemAlert(String),
+}
 
 fn display_notification(notification: Notification) {
     match notification {
