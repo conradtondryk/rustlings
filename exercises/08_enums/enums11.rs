@@ -11,6 +11,26 @@
 // - Scroll - with named fields: delta_x (i32), delta_y (i32)
 // - Move - with named fields: x (i32), y (i32)
 
+enum MouseEvent {
+    Click { x: i32, y: i32, button: String },
+    Scroll { delta_x: i32, delta_y: i32 },
+    Move { x: i32, y: i32 },
+}
+
+enum PaymentMethod {
+    Cash {
+        amount: f64,
+    },
+    CreditCard {
+        number: String,
+        cvv: u16,
+        amount: f64,
+    },
+    Bitcoin {
+        wallet_address: String,
+    },
+}
+
 // TODO: Define an enum called `PaymentMethod` with these variants:
 // - Cash - with a named field: amount (f64)
 // - CreditCard - with named fields: number (String), cvv (u16), amount (f64)
@@ -21,8 +41,16 @@ fn process_payment(payment: PaymentMethod) -> String {
         PaymentMethod::Cash { amount } => {
             format!("Paid ${:.2} in cash", amount)
         }
-        PaymentMethod::CreditCard { number, cvv, amount } => {
-            format!("Charged ${:.2} to card ending in {}", amount, &number[number.len()-4..])
+        PaymentMethod::CreditCard {
+            number,
+            cvv,
+            amount,
+        } => {
+            format!(
+                "Charged ${:.2} to card ending in {}",
+                amount,
+                &number[number.len() - 4..]
+            )
         }
         PaymentMethod::Bitcoin { wallet_address } => {
             format!("Paid with Bitcoin to {}", wallet_address)

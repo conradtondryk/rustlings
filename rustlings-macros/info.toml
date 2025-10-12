@@ -653,6 +653,145 @@ When a variant holds a value directly (tuple-style), use:
 Look at how `display_notification` matches on the enum to understand
 what fields each variant should have."""
 
+[[exercises]]
+name = "enums14"
+dir = "08_enums"
+hint = """
+This exercise tests your ability to define enums AND implement methods on them.
+
+First, define the Temperature enum with three variants, each holding an f64.
+
+Then, implement the methods:
+- Associated functions use `Self` as the return type
+- Methods use `&self` or `&mut self` as the first parameter
+- Use pattern matching in methods to handle all variants
+
+Example structure:
+```
+impl Temperature {
+    fn new_celsius(temp: f64) -> Self {
+        Temperature::Celsius(temp)
+    }
+
+    fn to_celsius(&self) -> f64 {
+        match self {
+            Temperature::Celsius(t) => *t,
+            Temperature::Fahrenheit(t) => /* convert */,
+            Temperature::Kelvin(t) => /* convert */,
+        }
+    }
+}
+```"""
+
+[[exercises]]
+name = "enums15"
+dir = "08_enums"
+hint = """
+This is a state machine pattern - enums are perfect for modeling state transitions!
+
+Each state holds its own data (time_remaining).
+
+For the `tick` method, you need to:
+1. Check which state you're in
+2. Decrement time
+3. If time reaches 0, transition to the next state with new time
+4. Otherwise, stay in same state with decremented time
+
+You'll need to use `*self = ...` to change the state:
+```
+fn tick(&mut self) {
+    *self = match self {
+        TrafficLightState::Red { time_remaining } => {
+            if *time_remaining <= 1 {
+                TrafficLightState::Green { time_remaining: 90 }
+            } else {
+                TrafficLightState::Red { time_remaining: time_remaining - 1 }
+            }
+        }
+        // ... other states
+    }
+}
+```"""
+
+[[exercises]]
+name = "enums16"
+dir = "08_enums"
+hint = """
+This is a recursive enum - some variants contain the enum itself!
+
+You need to use Box for recursive types, but Vec already handles this for you
+in the Array and Object variants.
+
+For methods that modify the enum:
+- Use `if let` to check the variant
+- Modify the inner Vec if it's the right variant
+
+Example:
+```
+fn push(&mut self, value: JsonValue) {
+    if let JsonValue::Array(vec) = self {
+        vec.push(value);
+    }
+}
+```
+
+The `as_bool` and `as_number` methods should use pattern matching:
+```
+fn as_bool(&self) -> Option<bool> {
+    match self {
+        JsonValue::Bool(b) => Some(*b),
+        _ => None,
+    }
+}
+```"""
+
+[[exercises]]
+name = "enums17"
+dir = "08_enums"
+hint = """
+Final challenge! This is a recursive enum using Box.
+
+To define recursive enums, you MUST use Box:
+```
+enum Expr {
+    Value(i32),
+    Add(Box<Expr>, Box<Expr>),
+}
+```
+
+For the constructor functions:
+```
+fn add(left: Expr, right: Expr) -> Self {
+    Expr::Add(Box::new(left), Box::new(right))
+}
+```
+
+For the eval method, you need RECURSIVE evaluation:
+```
+fn eval(&self) -> Option<i32> {
+    match self {
+        Expr::Value(n) => Some(*n),
+        Expr::Add(left, right) => {
+            let l = left.eval()?;  // ? propagates None
+            let r = right.eval()?;
+            Some(l + r)
+        }
+        Expr::Divide(left, right) => {
+            let l = left.eval()?;
+            let r = right.eval()?;
+            if r == 0 {
+                None  // Division by zero
+            } else {
+                Some(l / r)
+            }
+        }
+        // ... other operations
+    }
+}
+```
+
+The `?` operator is crucial here - it propagates None up through the recursion!"""
+
 # STRINGS
 
 [[exercises]]
