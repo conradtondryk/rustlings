@@ -11,6 +11,12 @@
 // - Fahrenheit(f64)
 // - Kelvin(f64)
 
+enum Temperature {
+    Celsius(f64),
+    Fahrenheit(f64),
+    Kelvin(f64),
+}
+
 // TODO: Implement these associated functions and methods on Temperature:
 //
 // Associated functions (called with Temperature::function_name):
@@ -33,6 +39,37 @@
 //
 // - is_freezing(&self) -> bool
 //   Returns true if temperature is at or below 0°C
+
+impl Temperature {
+    fn new_celsius(temp: f64) -> Self {
+        Temperature::Celsius(temp)
+    }
+    fn new_fahrenheit(temp: f64) -> Self {
+        Temperature::Fahrenheit(temp)
+    }
+    fn new_kelvin(temp: f64) -> Self {
+        Temperature::Kelvin(temp)
+    }
+    fn to_celsius(&self) -> f64 {
+        match self {
+            Temperature::Celsius(temp) => *temp,
+            Temperature::Fahrenheit(temp) => (*temp - 32.0) * 5.0 / 9.0,
+            Temperature::Kelvin(temp) => *temp - 273.15,
+        }
+    }
+
+    fn to_fahrenheit(&self) -> f64 {
+        match self {
+            Temperature::Celsius(temp) => *temp * 9.0 / 5.0 + 32.0,
+            Temperature::Fahrenheit(temp) => *temp,
+            Temperature::Kelvin(temp) => (*temp - 273.15) * 9.0 / 5.0 + 32.0,
+        }
+    }
+
+    fn is_freezing(&self) -> bool {
+        self.to_celsius() <= 0.0
+    }
+}
 
 fn main() {
     let temp1 = Temperature::new_celsius(25.0);
