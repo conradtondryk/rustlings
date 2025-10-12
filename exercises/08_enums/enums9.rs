@@ -20,7 +20,7 @@ fn safe_divide(a: i32, b: i32) -> Result<i32, MathError> {
     if b == 0 {
         Err(MathError::DivisionByZero)
     } else {
-        a / b
+        Ok(a / b)
     }
 }
 
@@ -29,7 +29,7 @@ fn safe_divide(a: i32, b: i32) -> Result<i32, MathError> {
 // You can use (n as f64).sqrt() and convert back to i32.
 fn safe_sqrt(n: i32) -> Result<i32, MathError> {
     if n >= 0 {
-        (n as f64).sqrt() as i32
+        Ok((n as f64).sqrt() as i32)
     } else {
         Err(MathError::NegativeSquareRoot)
     }
@@ -42,13 +42,17 @@ fn safe_sqrt(n: i32) -> Result<i32, MathError> {
 // 3. Return the final value
 // Use the `?` operator to propagate errors from safe_divide and safe_sqrt.
 fn divide_and_sqrt(a: i32, b: i32) -> Result<i32, MathError> {
-    todo!()
+    safe_sqrt(safe_divide(a, b)?)
 }
 
 // TODO: Implement this function to get the first element of a vector
 // and add a value to it. Return None if the vector is empty.
 fn add_to_first(vec: Vec<i32>, value: i32) -> Option<i32> {
-    todo!()
+    if vec.is_empty() {
+        None
+    } else {
+        Some(vec.first().unwrap() + value)
+    }
 }
 
 fn main() {
