@@ -12,11 +12,25 @@
 // - Attack (tuple variant holding a String for weapon name and u32 for damage)
 // - Quit (no data - unit variant)
 
+enum GameAction {
+    Jump,
+    Move { x: i32, y: i32 },
+    Attack(String, u32),
+    Quit,
+}
+
 // TODO: Define an enum called `DatabaseOperation` with these variants:
 // - Read (tuple variant holding a String for the table name)
 // - Write (struct variant with: table (String), data (String))
 // - Delete (tuple variant holding a String for table and a u32 for id)
 // - Close (no data - unit variant)
+
+enum DatabaseOperation {
+    Read(String),
+    Write { table: String, data: String },
+    Delete(String, u32),
+    Close,
+}
 
 fn execute_action(action: GameAction) {
     match action {
