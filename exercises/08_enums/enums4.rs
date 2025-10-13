@@ -4,6 +4,14 @@
 // useful enums. Option is used to represent a value that might be present
 // (Some) or absent (None).
 //
+// Learning Resources:
+// - The Rust Book - Option:
+//   https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#the-option-enum-and-its-advantages-over-null-values
+// - The Rust Book - Pattern Matching:
+//   https://doc.rust-lang.org/book/ch06-02-match.html
+// - Rust by Example - Option:
+//   https://doc.rust-lang.org/rust-by-example/std/option.html
+//
 // Execute `rustlings hint enums4` or use the `hint` watch subcommand for a
 // hint.
 

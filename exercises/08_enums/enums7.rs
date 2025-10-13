@@ -3,6 +3,14 @@
 // This exercise introduces you to the Result<T, E> enum, which is used for
 // error handling in Rust. A Result can be either Ok(value) or Err(error).
 //
+// Learning Resources:
+// - The Rust Book - Recoverable Errors with Result:
+//   https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html
+// - Rust by Example - Result:
+//   https://doc.rust-lang.org/rust-by-example/std/result.html
+// - Rust by Example - Error Handling:
+//   https://doc.rust-lang.org/rust-by-example/error.html
+//
 // Execute `rustlings hint enums7` or use the `hint` watch subcommand for a
 // hint.
 

@@ -3,6 +3,14 @@
 // This exercise focuses on CREATING enum definitions from scratch.
 // You'll practice defining enums with different types of variants.
 //
+// Learning Resources:
+// - The Rust Book - Defining an Enum:
+//   https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
+// - Rust by Example - Enums:
+//   https://doc.rust-lang.org/rust-by-example/custom_types/enum.html
+// - Rust by Example - C-like Enums:
+//   https://doc.rust-lang.org/rust-by-example/custom_types/enum/c_like.html
+//
 // Execute `rustlings hint enums10` or use the `hint` watch subcommand for a
 // hint.
 

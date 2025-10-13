@@ -3,6 +3,16 @@
 // Advanced exercise: Build a JSON-like data structure using enums.
 // You'll need to define recursive enums and implement complex methods.
 //
+// Learning Resources:
+// - The Rust Book - Recursive Types with Box:
+//   https://doc.rust-lang.org/book/ch15-01-box.html#enabling-recursive-types-with-boxes
+// - The Rust Book - Enums:
+//   https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
+// - Rust by Example - Enums:
+//   https://doc.rust-lang.org/rust-by-example/custom_types/enum.html
+// - The Rust Book - Pattern Matching:
+//   https://doc.rust-lang.org/book/ch06-02-match.html
+//
 // Execute `rustlings hint enums16` or use the `hint` watch subcommand for a
 // hint.
 

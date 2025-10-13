@@ -3,6 +3,14 @@
 // Enums can be nested inside other enums! This exercise explores working
 // with nested enums and more complex pattern matching.
 //
+// Learning Resources:
+// - The Rust Book - Enums:
+//   https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
+// - The Rust Book - Pattern Matching:
+//   https://doc.rust-lang.org/book/ch06-02-match.html
+// - Rust by Example - Enums:
+//   https://doc.rust-lang.org/rust-by-example/custom_types/enum.html
+//
 // Execute `rustlings hint enums8` or use the `hint` watch subcommand for a
 // hint.
 

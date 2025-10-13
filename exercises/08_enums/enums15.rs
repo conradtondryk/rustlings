@@ -3,6 +3,16 @@
 // Build a state machine for a traffic light system using enums with methods.
 // This is a common pattern in Rust for modeling state transitions.
 //
+// Learning Resources:
+// - The Rust Book - Enums:
+//   https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
+// - The Rust Book - Method Syntax:
+//   https://doc.rust-lang.org/book/ch05-03-method-syntax.html
+// - Rust by Example - Enums:
+//   https://doc.rust-lang.org/rust-by-example/custom_types/enum.html
+// - State Machine Pattern in Rust:
+//   https://hoverbear.org/blog/rust-state-machine-pattern/
+//
 // Execute `rustlings hint enums15` or use the `hint` watch subcommand for a
 // hint.
 

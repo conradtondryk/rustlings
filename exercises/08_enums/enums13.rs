@@ -4,6 +4,14 @@
 // define enums and structs that work together to represent different types
 // of notifications.
 //
+// Learning Resources:
+// - The Rust Book - Structs:
+//   https://doc.rust-lang.org/book/ch05-01-defining-structs.html
+// - The Rust Book - Enums:
+//   https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
+// - Rust by Example - Structs:
+//   https://doc.rust-lang.org/rust-by-example/custom_types/structs.html
+//
 // Execute `rustlings hint enums13` or use the `hint` watch subcommand for a
 // hint.
 

@@ -4,6 +4,14 @@
 // the `?` operator for error propagation, and working with both Option and
 // Result types together.
 //
+// Learning Resources:
+// - The Rust Book - The ? Operator:
+//   https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator
+// - The Rust Book - Result:
+//   https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html
+// - Rust by Example - Error Handling:
+//   https://doc.rust-lang.org/rust-by-example/error/multiple_error_types/reenter_question_mark.html
+//
 // Execute `rustlings hint enums9` or use the `hint` watch subcommand for a
 // hint.
 

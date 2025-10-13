@@ -3,6 +3,16 @@
 // This exercise combines enum definition with associated functions and methods.
 // You'll build a temperature system that can work with different units.
 //
+// Learning Resources:
+// - The Rust Book - Method Syntax:
+//   https://doc.rust-lang.org/book/ch05-03-method-syntax.html
+// - The Rust Book - Enums:
+//   https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
+// - Rust by Example - Methods:
+//   https://doc.rust-lang.org/rust-by-example/fn/methods.html
+// - The Rust Book - Pattern Matching:
+//   https://doc.rust-lang.org/book/ch06-02-match.html
+//
 // Execute `rustlings hint enums14` or use the `hint` watch subcommand for a
 // hint.
 

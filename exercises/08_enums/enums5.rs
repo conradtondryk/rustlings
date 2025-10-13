@@ -3,6 +3,12 @@
 // This exercise will teach you about using `if let` as a more concise
 // alternative to `match` when you only care about one specific pattern.
 //
+// Learning Resources:
+// - The Rust Book - if let:
+//   https://doc.rust-lang.org/book/ch06-03-if-let.html
+// - Rust by Example - if let:
+//   https://doc.rust-lang.org/rust-by-example/flow_control/if_let.html
+//
 // Execute `rustlings hint enums5` or use the `hint` watch subcommand for a
 // hint.
 

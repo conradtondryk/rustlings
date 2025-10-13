@@ -4,6 +4,14 @@
 // This exercise will have you implement methods to work with a traffic
 // light system.
 //
+// Learning Resources:
+// - The Rust Book - Method Syntax:
+//   https://doc.rust-lang.org/book/ch05-03-method-syntax.html
+// - The Rust Book - Enums:
+//   https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
+// - Rust by Example - Methods:
+//   https://doc.rust-lang.org/rust-by-example/fn/methods.html
+//
 // Execute `rustlings hint enums6` or use the `hint` watch subcommand for a
 // hint.
 

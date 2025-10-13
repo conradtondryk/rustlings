@@ -3,6 +3,18 @@
 // Final boss: Implement a calculator that builds an expression tree using enums.
 // This combines enums, recursion, pattern matching, and associated functions.
 //
+// Learning Resources:
+// - The Rust Book - Recursive Types with Box:
+//   https://doc.rust-lang.org/book/ch15-01-box.html#enabling-recursive-types-with-boxes
+// - The Rust Book - The ? Operator:
+//   https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator
+// - The Rust Book - Enums:
+//   https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
+// - Rust by Example - Recursion:
+//   https://doc.rust-lang.org/rust-by-example/fn/closures/closure_examples/iter_any.html
+// - The Rust Book - Pattern Matching:
+//   https://doc.rust-lang.org/book/ch06-02-match.html
+//
 // Execute `rustlings hint enums17` or use the `hint` watch subcommand for a
 // hint.
 

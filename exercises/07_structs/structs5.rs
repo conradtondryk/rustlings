@@ -4,6 +4,14 @@
 // fail to be created. This exercise teaches you how to use Option and Result
 // in struct fields.
 //
+// Learning Resources:
+// - The Rust Book - Option:
+//   https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#the-option-enum-and-its-advantages-over-null-values
+// - The Rust Book - Structs:
+//   https://doc.rust-lang.org/book/ch05-01-defining-structs.html
+// - Rust by Example - Option:
+//   https://doc.rust-lang.org/rust-by-example/std/option.html
+//
 // Execute `rustlings hint structs5` or use the `hint` watch subcommand for a
 // hint.
 

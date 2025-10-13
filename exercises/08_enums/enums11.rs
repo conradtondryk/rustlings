@@ -3,6 +3,14 @@
 // This exercise teaches you how to create enums with struct-like variants.
 // These are useful when you want named fields in your enum variants.
 //
+// Learning Resources:
+// - The Rust Book - Enum Values:
+//   https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#enum-values
+// - Rust by Example - Enums:
+//   https://doc.rust-lang.org/rust-by-example/custom_types/enum.html
+// - The Rust Book - Pattern Matching:
+//   https://doc.rust-lang.org/book/ch06-02-match.html
+//
 // Execute `rustlings hint enums11` or use the `hint` watch subcommand for a
 // hint.
 

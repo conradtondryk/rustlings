@@ -3,6 +3,14 @@
 // This exercise combines everything: creating enums with mixed variant types
 // (unit, tuple, and struct variants all in one enum).
 //
+// Learning Resources:
+// - The Rust Book - Defining an Enum:
+//   https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
+// - Rust by Example - Enums:
+//   https://doc.rust-lang.org/rust-by-example/custom_types/enum.html
+// - The Rust Book - Pattern Matching:
+//   https://doc.rust-lang.org/book/ch06-02-match.html
+//
 // Execute `rustlings hint enums12` or use the `hint` watch subcommand for a
 // hint.
 

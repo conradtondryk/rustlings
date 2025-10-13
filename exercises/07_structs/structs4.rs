@@ -3,6 +3,12 @@
 // This exercise will teach you how to define structs from scratch based on
 // requirements. You'll practice choosing appropriate field types.
 //
+// Learning Resources:
+// - The Rust Book - Defining Structs:
+//   https://doc.rust-lang.org/book/ch05-01-defining-structs.html
+// - Rust by Example - Structs:
+//   https://doc.rust-lang.org/rust-by-example/custom_types/structs.html
+//
 // Execute `rustlings hint structs4` or use the `hint` watch subcommand for a
 // hint.
 
