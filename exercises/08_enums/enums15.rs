@@ -21,6 +21,12 @@
 // - Yellow { time_remaining: u32 }
 // - Green { time_remaining: u32 }
 
+enum TrafficLightState {
+    Red { time_remaining: u32 },
+    Yellow { time_remaining: u32 },
+    Green { time_remaining: u32 },
+}
+
 // TODO: Implement these methods on TrafficLightState:
 //
 // - new() -> Self
@@ -39,10 +45,64 @@
 // - color_name(&self) -> &str
 //   Returns "Red", "Yellow", or "Green"
 
+impl TrafficLightState {
+    fn new() -> Self {
+        TrafficLightState::Red { time_remaining: 60 }
+    }
+    fn tick(&mut self) -> &mut Self {
+        if self.time_remaining() > 0 {
+            match self {
+                TrafficLightState::Red { time_remaining } => {
+                    *time_remaining -= 1;
+                    if *time_remaining == 0 {
+                        *self = TrafficLightState::Green { time_remaining: 90 };
+                    }
+                }
+                TrafficLightState::Green { time_remaining } => {
+                    *time_remaining -= 1;
+                    if *time_remaining == 0 {
+                        *self = TrafficLightState::Yellow { time_remaining: 10 };
+                    }
+                }
+                TrafficLightState::Yellow { time_remaining } => {
+                    *time_remaining -= 1;
+                    if *time_remaining == 0 {
+                        *self = TrafficLightState::Red { time_remaining: 60 };
+                    }
+                }
+            }
+        }
+
+        self
+    }
+    fn color_name(&self) -> &str {
+        match self {
+            TrafficLightState::Red { time_remaining: _ } => "Red",
+            TrafficLightState::Green { time_remaining: _ } => "Green",
+            TrafficLightState::Yellow { time_remaining: _ } => "Yellow",
+        }
+    }
+
+    fn can_cross(&self) -> bool {
+        matches!(self, TrafficLightState::Red { time_remaining: _ })
+    }
+    fn time_remaining(&self) -> u32 {
+        match self {
+            TrafficLightState::Red { time_remaining } => *time_remaining,
+            TrafficLightState::Yellow { time_remaining } => *time_remaining,
+            TrafficLightState::Green { time_remaining } => *time_remaining,
+        }
+    }
+}
+
 fn main() {
     let mut light = TrafficLightState::new();
 
-    println!("Light is {} with {}s remaining", light.color_name(), light.time_remaining());
+    println!(
+        "Light is {} with {}s remaining",
+        light.color_name(),
+        light.time_remaining()
+    );
     println!("Can cross? {}", light.can_cross());
 
     // Simulate 61 seconds
@@ -50,8 +110,11 @@ fn main() {
         light.tick();
     }
 
-    println!("After 61s: Light is {} with {}s remaining",
-             light.color_name(), light.time_remaining());
+    println!(
+        "After 61s: Light is {} with {}s remaining",
+        light.color_name(),
+        light.time_remaining()
+    );
     println!("Can cross? {}", light.can_cross());
 }
 
