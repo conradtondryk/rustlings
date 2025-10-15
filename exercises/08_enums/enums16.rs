@@ -26,10 +26,20 @@
 //
 // Note: This enum is recursive - Array and Object contain JsonValue!
 
+enum JsonValue {
+    Null,
+    Bool(bool),
+    Number(f64),
+    String(String),
+    Array(Vec<JsonValue>),
+    Object(Vec<(String, JsonValue)>),
+}
+
 // TODO: Implement these methods on JsonValue:
 //
 // - new_null() -> Self
 //   Creates a Null value
+
 //
 // - new_bool(value: bool) -> Self
 //   Creates a Bool value
@@ -61,10 +71,59 @@
 // - insert(&mut self, key: String, value: JsonValue)
 //   If self is an Object, inserts the key-value pair. Otherwise, does nothing.
 
+impl JsonValue {
+    fn new_null() -> Self {
+        JsonValue::Null
+    }
+    fn new_bool(value: bool) -> Self {
+        JsonValue::Bool(value)
+    }
+    fn new_number(value: f64) -> Self {
+        JsonValue::Number(value)
+    }
+    fn new_string(value: String) -> Self {
+        JsonValue::String(value)
+    }
+    fn new_array() -> Self {
+        JsonValue::Array(Vec::new())
+    }
+    fn new_object() -> Self {
+        JsonValue::Object(Vec::new())
+    }
+    fn is_null(&self) -> bool {
+        matches!(self, JsonValue::Null)
+    }
+    fn as_bool(&self) -> Option<bool> {
+        match *self {
+            JsonValue::Bool(value) => Some(value),
+            _ => None,
+        }
+    }
+    fn as_number(&self) -> Option<f64> {
+        match *self {
+            JsonValue::Number(value) => Some(value),
+            _ => None,
+        }
+    }
+    fn push(&mut self, value: JsonValue) {
+        if let JsonValue::Array(ref mut vec) = *self {
+            vec.push(value)
+        }
+    }
+    fn insert(&mut self, key: String, value: JsonValue) {
+        if let JsonValue::Object(ref mut vec) = *self {
+            vec.push((key, value))
+        }
+    }
+}
+
 fn main() {
     // Create a JSON object like: {"name": "Alice", "age": 30, "active": true}
     let mut person = JsonValue::new_object();
-    person.insert(String::from("name"), JsonValue::new_string(String::from("Alice")));
+    person.insert(
+        String::from("name"),
+        JsonValue::new_string(String::from("Alice")),
+    );
     person.insert(String::from("age"), JsonValue::new_number(30.0));
     person.insert(String::from("active"), JsonValue::new_bool(true));
 
@@ -118,7 +177,10 @@ mod tests {
     #[test]
     fn test_object_insert() {
         let mut obj = JsonValue::new_object();
-        obj.insert(String::from("key1"), JsonValue::new_string(String::from("value1")));
+        obj.insert(
+            String::from("key1"),
+            JsonValue::new_string(String::from("value1")),
+        );
         obj.insert(String::from("key2"), JsonValue::new_number(123.0));
 
         if let JsonValue::Object(pairs) = obj {
